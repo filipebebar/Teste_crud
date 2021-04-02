@@ -1,0 +1,144 @@
+<div class="template-cadastro-pessoa">
+  <div class="container">
+    <nav class="navbar navbar-dark bg-info">
+      <h2>Teste de Programação</h2>
+    </nav>
+
+    <div class="card">
+      <div class="row">
+        <div class="formulario col-md-5">
+          <div class="card-header">
+            <h5>Desenvolvedor</h5>
+          </div>
+          <form>
+            <div class="card-body">
+              <div>
+                <label>Nome</label>
+                <input type="text"
+                       required="true"
+                       name="nome"
+                       id="nome"
+                       class="form-control"
+                       [maxLength]="50"
+                       [(ngModel)]="dev.nome"
+                       placeholder="Digite seu nome.."
+                       [ngClass]="{
+                'alert-danger':!dev.nome}"/>
+              </div>
+              <div>
+                <label>Sexo</label>
+                <input type="text"
+                       required="true"
+                       name="sexo"
+                       id="sexo"
+                       class="form-control"
+                       minlength="10"
+                       maxlength="10"
+                       [(ngModel)]="dev.sexo"
+                       placeholder="Digite seu sexo.."
+                       [ngClass]="{
+                'alert-danger':!dev.sexo}"/>
+              </div>
+              <div>
+                <label>Idade</label>
+                <input type="text"
+                       required="true"
+                       name="idade"
+                       id="idade"
+                       class="form-control"
+                       minlength="3"
+                       maxlength="3"
+                       [(ngModel)]="dev.idade"
+                       placeholder="Digite sua idade.."
+                       [ngClass]="{
+                'alert-danger':!dev.idade}"/>
+              </div>
+              <div>
+                <label>Hobby</label>
+                <input type="text"
+                       required="true"
+                       name="hobby"
+                       id="hobby"
+                       class="form-control"
+                       minlength="120"
+                       maxlength="120"
+                       [(ngModel)]="dev.hobby"
+                       placeholder="Digite seu hobby.."
+                       [ngClass]="{
+                'alert-danger':!dev.hobby}"/>
+              </div>
+              <div>
+                <label>Data de Nascimento</label>
+                <input
+                  type="date"
+                  required="true"
+                  name="dataNascimento"
+                  id="dataNascimento"
+                  class="form-control"
+                  [(ngModel)]="dev.dataNascimento"
+                  [maxLength]="10"
+                  [ngClass]="{
+                'alert-danger':!dev.dataNascimento}"/>
+              </div>
+              <div class="row" style="margin-top: 5%">
+                <div class="btn-group btn col-form-label-sm" *ngIf="editingDev">
+                  <button type="button" class="btn btn-outline-secondary" (click)="cancelarEdicao()">Cancelar</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="btn-group btn">
+              <button type="button" class="btn btn-primary"
+                      (click)="salvar()">Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-listagem-pessoas card">
+      <div class="card-header">
+        <h4>Lista de pessoa</h4>
+      </div>
+
+      <div class="card-body">
+        <table *ngFor="let desenvolvedor of desenvolvedores" class="table table-bordered">
+          <tr class="text-center">
+            <th>#</th>
+            <th>Nome</th>
+            <th>Sexo</th>
+            <th>Idade</th>
+            <th>Hobby</th>
+            <th>Data de Nascimento</th>
+            <th>Açoes</th>
+          </tr>
+
+          <tr class="text-center">
+            <td>{{desenvolvedor.id}}</td>
+            <td>{{desenvolvedor.nome}}</td>
+            <td>{{desenvolvedor.sexo}}</td>
+            <td>{{desenvolvedor.idade}}</td>
+            <td>{{desenvolvedor.hobby}}</td>
+            <td>{{desenvolvedor.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+            <td>
+              <button type="button"
+                      class="btn btn-default"
+                      title="Editar"
+                      (click)="editarDev(desenvolvedor)">
+                <i-bs
+                  name="pencil-square"
+                  class="text-primary"
+                  width="2rem"
+                  height="2rem">
+                </i-bs>
+              </button>
+              <button class="btn btn-danger" title="excluir" (click)="deletarDev(desenvolvedor)">X</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
