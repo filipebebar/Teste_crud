@@ -1,27 +1,18 @@
 package br.com.crudteste.springcrudteste.controller;
 
-import br.com.crudteste.springcrudteste.entity.Desenvolvedor;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DesenvolvedorControllerTest {
 
